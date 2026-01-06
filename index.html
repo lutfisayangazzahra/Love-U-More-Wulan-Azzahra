@@ -1,29 +1,177 @@
 <!DOCTYPE html>
-<html>
+<html lang="id">
 <head>
-  <title>Untuk Kamu 💖</title>
+  <meta charset="UTF-8">
+  <title>Love U More 💖</title>
+
+  <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Poppins&display=swap" rel="stylesheet">
+
   <style>
     body {
-      background: linear-gradient(#ff9a9e, #fad0c4);
-      font-family: Arial, sans-serif;
-      text-align: center;
-      padding: 50px;
+      margin: 0;
+      min-height: 100vh;
+      background: linear-gradient(135deg, #ff9a9e, #fad0c4);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      font-family: 'Poppins', sans-serif;
+      overflow: hidden;
+    }
+
+    .card {
+      background: rgba(255, 255, 255, 0.18);
+      padding: 40px;
+      border-radius: 25px;
+      max-width: 650px;
+      box-shadow: 0 25px 45px rgba(0,0,0,0.3);
       color: white;
     }
-    h1 { font-size: 45px; }
-    p {
-      font-size: 20px;
-      max-width: 600px;
-      margin: auto;
+
+    h1 {
+      font-family: 'Great Vibes', cursive;
+      font-size: 52px;
+      color: #ff4f91;
+      text-align: center;
+      animation: floatText 3s ease-in-out infinite;
+    }
+
+    #typing {
+      font-size: 17px;
+      line-height: 1.9;
+      margin-top: 20px;
+      white-space: pre-line;
+      text-align: justify;
+    }
+
+    .blink {
+      margin-top: 25px;
+      text-align: center;
+      font-size: 18px;
+      color: #ff69b4;
+      animation: blink 1.5s infinite;
+      font-weight: bold;
+    }
+
+    .signature {
+      margin-top: 20px;
+      text-align: center;
+      font-style: italic;
+      color: #ffd1dc;
+    }
+
+    img {
+      width: 100%;
+      border-radius: 20px;
+      margin-top: 30px;
+      box-shadow: 0 12px 30px rgba(0,0,0,0.35);
+    }
+
+    .heart {
+      position: fixed;
+      top: -10px;
+      font-size: 26px;
+      animation: fall linear infinite;
+      color: pink;
+      pointer-events: none;
+    }
+
+    @keyframes floatText {
+      0% { transform: translateY(0); }
+      50% { transform: translateY(-10px); }
+      100% { transform: translateY(0); }
+    }
+
+    @keyframes blink {
+      0%, 100% { opacity: 1; }
+      50% { opacity: 0.3; }
+    }
+
+    @keyframes fall {
+      to {
+        transform: translateY(110vh);
+      }
     }
   </style>
 </head>
+
 <body>
-  <h1>Hai Sayang 💕</h1>
-  <p>
-    Jangan menyerah ya.  
-    Aku selalu percaya kamu kuat dan hebat.  
-    Website kecil ini cuma mau bilang: aku sayang kamu 🤍
-  </p>
+
+  <div class="card">
+    <h1>Wulan Azzahra 💕</h1>
+
+    <div id="typing"></div>
+
+    <div class="blink">
+      Semoga tulisan ini bisa bikin kamu sedikit happy dan semangat ya 💖
+    </div>
+
+    <div class="signature">
+      Dari laki-laki yang sangat mencintaimu<br>
+      <strong>Lutfi Hidayat</strong>
+    </div>
+
+    <img src="foto.jpg" alt="Foto Kita Berdua">
+  </div>
+
+  <audio autoplay loop>
+    <source src="lagu.mp3" type="audio/mpeg">
+  </audio>
+
+  <script>
+    const text = `Wulan Azzahra, perempuan paling cantik dan paling kusayang.
+Kehadiranmu adalah alasan aku bersyukur tanpa batas kepada Tuhan.
+
+Aku sering merasa sedih dan khawatir saat melihatmu kehilangan semangat,
+ketika senyummu redup dan langkahmu terasa lebih berat dari biasanya.
+
+Aku tahu, mungkin yang kamu pikirkan tak jauh dari persoalan kehidupan.
+Melihat kanan dan kiri, teman-teman yang mulai menikah,
+mulai lamaran, dan terlihat bahagia lewat cerita media sosial mereka.
+
+Apa yang terlihat oleh mata sering kali tampak indah,
+hingga tanpa sadar kita mulai membandingkan diri sendiri,
+dan bertanya, “kenapa aku rasanya begini-begini saja?”
+
+Tapi dengarkan aku, sayang…
+Hal-hal indah sedang menunggumu di depan sana.
+Tidak ada satu pun keringat, usaha, dan doa yang sia-sia.
+
+Aku di sini, selalu ada untukmu.
+Bismillah, pernikahan itu akan kita usahakan bersama.
+Bukan hanya menikah, tapi saling menguatkan,
+membahagiakan lahir dan batin hingga akhir hayat.
+
+Love you more, always 💖`;
+
+    let i = 0;
+    const speed = 35;
+    const typingDiv = document.getElementById("typing");
+
+    function typeWriter() {
+      if (i < text.length) {
+        typingDiv.innerHTML += text.charAt(i);
+        i++;
+        setTimeout(typeWriter, speed);
+      }
+    }
+
+    typeWriter();
+
+    function createHeart() {
+      const heart = document.createElement("div");
+      heart.classList.add("heart");
+      heart.innerText = "💗";
+      heart.style.left = Math.random() * 100 + "vw";
+      heart.style.animationDuration = (3 + Math.random() * 3) + "s";
+      document.body.appendChild(heart);
+
+      setTimeout(() => {
+        heart.remove();
+      }, 6000);
+    }
+
+    setInterval(createHeart, 300);
+  </script>
+
 </body>
 </html>
